@@ -97,7 +97,9 @@ class StatusMessageProvider:
 
 class StatusStreamingCallback(BaseCallback):
     def __init__(self, status_message_provider: StatusMessageProvider | None = None):
-        self.status_message_provider = status_message_provider or StatusMessageProvider()
+        print(f"status_message_provider: {status_message_provider}")
+        self.status_message_provider = status_message_provider
+        assert self.status_message_provider is not None, "status_message_provider cannot be None"
 
     def on_tool_start(
         self,
