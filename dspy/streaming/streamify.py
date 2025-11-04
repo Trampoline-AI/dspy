@@ -31,6 +31,7 @@ def streamify(
     include_final_prediction_in_output_stream: bool = True,
     is_async_program: bool = False,
     async_streaming: bool = True,
+    fail_on_none_message_provider: bool = False,
 ) -> Callable[[Any, Any], Awaitable[Any]]:
     """
     Wrap a DSPy program so that it streams its outputs incrementally, rather than returning them
