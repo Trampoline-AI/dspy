@@ -1,5 +1,6 @@
 import asyncio
 import concurrent.futures
+import traceback
 from dataclasses import dataclass
 from typing import Any
 
@@ -72,6 +73,10 @@ class StatusMessageProvider:
 
     def tool_start_status_message(self, instance: Any, inputs: dict[str, Any]):
         """Status message before a `dspy.Tool` is called."""
+
+        stack_trace = "".join(traceback.format_stack())
+        error_msg = f"tool_start_status_message should not be called\n\nFull stack trace:\n{stack_trace}"
+        raise Exception(error_msg)
         return f"Calling tool {instance.name}..."
 
     def tool_end_status_message(self, outputs: Any):
